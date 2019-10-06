@@ -1,14 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:laboral_app/ui_components/rounded_text_field.dart';
-import 'package:laboral_app/ui_components/rouned_button.dart';
+import 'package:laboral_app/ui_components/RoundedTextField.dart';
+import 'package:laboral_app/ui_components/RoundedButton.dart';
 import 'package:laboral_app/localization/AppLocalizations.dart';
+import 'package:laboral_app/ui_components/TextFieldAlertDialog.dart';
 
 class EntrancePage extends StatelessWidget {
   EntrancePage({Key key, this.title}) : super(key: key);
 
   TextStyle style = TextStyle(fontFamily: 'Montserrat', fontSize: 20.0);
 
+  TextEditingController textFieldController = TextEditingController();
+
   final String title;
+
+  Future<void> displayDialog(BuildContext context) async {
+
+    Widget cancelButton = new FlatButton(
+      child: new Text('Button'),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: Text('Title', textAlign: TextAlign.center),
+      content: TextField(
+        controller: textFieldController,
+        decoration: InputDecoration(hintText: AppLocalizations.of(context).translate('email')),
+      ),
+      actions: <Widget>[
+        cancelButton
+      ],
+    );
+
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+              return alert;
+      },
+    );
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +71,10 @@ class EntrancePage extends StatelessWidget {
                 SizedBox(
                   height: 35.0,
                 ),
-                RoundedButton(AppLocalizations.of(context).translate('login')),
+                RoundedButton(
+                    AppLocalizations.of(context).translate('login'),
+                        () => { displayDialog(context) }
+                        ),
                 SizedBox(
                   height: 15.0,
                 ),
