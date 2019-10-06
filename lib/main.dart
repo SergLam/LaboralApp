@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:laboral_app/ui/home.dart';
+import 'package:laboral_app/screens/entrance.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:laboral_app/localization/AppLocalizations.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +15,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: EntrancePage(title: 'Flutter Demo Home Page'),
+      localizationsDelegates: [
+        // ... app-specific localization delegate[s] here
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en'),
+        const Locale('ru')
+      ],
     );
   }
 }
