@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       ),
       home: EntrancePage(title: 'Flutter Demo Home Page'),
       localizationsDelegates: [
-        // ... app-specific localization delegate[s] here
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
