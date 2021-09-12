@@ -13,33 +13,33 @@ class EntrancePage extends StatelessWidget {
 
   final String title;
 
-  Future<void> displayDialog(BuildContext context) async {
-
-    Widget cancelButton = new FlatButton(
-      child: new Text('Button'),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-
-    AlertDialog alert = AlertDialog(
-      title: Text('Title', textAlign: TextAlign.center),
-      content: TextField(
-        controller: textFieldController,
-        decoration: InputDecoration(hintText: AppLocalizations.of(context).translate('email')),
-      ),
-      actions: <Widget>[
-        cancelButton
-      ],
-    );
-
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context) {
-              return alert;
-      },
-    );
+  displayDialog(BuildContext context){
+    TextFieldAlertDialog(title: 'Fuck', inputHint: 'Fuck', buttonTitle: 'Fuck').displayDialog(context);
+//    Widget cancelButton = new FlatButton(
+//      child: new Text('Button'),
+//      onPressed: () {
+//        Navigator.of(context).pop();
+//      },
+//    );
+//
+//    AlertDialog alert = AlertDialog(
+//      title: Text('Title', textAlign: TextAlign.center),
+//      content: TextField(
+//        controller: textFieldController,
+//        decoration: InputDecoration(hintText: AppLocalizations.of(context).translate('email')),
+//      ),
+//      actions: <Widget>[
+//        cancelButton
+//      ],
+//    );
+//
+//    return showDialog<void>(
+//      context: context,
+//      barrierDismissible: true,
+//      builder: (BuildContext context) {
+//              return alert;
+//      },
+//    );
 
   }
 
